@@ -1,6 +1,6 @@
 package com.quantitymeasurement;
 
-public enum WeightUnit {
+public enum WeightUnit implements IMeasurable{
 
     KILOGRAM(1.0),
     GRAM(0.001),
@@ -26,5 +26,7 @@ public enum WeightUnit {
         return Math.round(result * 100.0) / 100.0;
     }
     
-    
+    public String getUnitName() {
+    	return this.name();
+    }
 }
