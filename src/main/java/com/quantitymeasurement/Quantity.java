@@ -56,7 +56,11 @@ public final class Quantity<U extends IMeasurable> {
         public abstract double compute(double a, double b);
     }
 
-    private void validateArithmeticOperands(Quantity<U> other, U targetUnit, boolean targetRequired) {
+    private void validateArithmeticOperands(
+            Quantity<U> other,
+            U targetUnit,
+            boolean targetRequired,
+            ArithmeticOperation operation) {
 
         if (other == null)
             throw new IllegalArgumentException("Other quantity cannot be null");
@@ -69,6 +73,9 @@ public final class Quantity<U extends IMeasurable> {
 
         if (targetRequired && targetUnit == null)
             throw new IllegalArgumentException("Target unit cannot be null");
+
+        this.unit.validateOperationSupport(operation.name());
+        other.unit.validateOperationSupport(operation.name());
     }
 
     private double performBaseArithmetic(Quantity<U> other, ArithmeticOperation operation) {
@@ -89,7 +96,7 @@ public final class Quantity<U extends IMeasurable> {
 
     public Quantity<U> add(Quantity<U> other, U targetUnit) {
 
-        validateArithmeticOperands(other, targetUnit, true);
+    	validateArithmeticOperands(other, targetUnit, true, ArithmeticOperation.ADD);
 
         double baseResult = performBaseArithmetic(other, ArithmeticOperation.ADD);
 
@@ -104,7 +111,7 @@ public final class Quantity<U extends IMeasurable> {
 
     public Quantity<U> subtract(Quantity<U> other, U targetUnit) {
 
-        validateArithmeticOperands(other, targetUnit, true);
+    	validateArithmeticOperands(other, targetUnit, true, ArithmeticOperation.SUBTRACT);
 
         double baseResult = performBaseArithmetic(other, ArithmeticOperation.SUBTRACT);
 
@@ -115,7 +122,7 @@ public final class Quantity<U extends IMeasurable> {
 
     public double divide(Quantity<U> other) {
 
-        validateArithmeticOperands(other, null, false);
+    	validateArithmeticOperands(other, null, false, ArithmeticOperation.DIVIDE);
 
         return performBaseArithmetic(other, ArithmeticOperation.DIVIDE);
     }
