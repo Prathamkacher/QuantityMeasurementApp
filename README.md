@@ -393,11 +393,11 @@ Invalid inputs throw `IllegalArgumentException`.
 - Maintains type safety: volume cannot be mixed with length or weight
 - Objects are immutable; addition and conversion return new instances
 
-[UC11-](https://github.com/Prathamkacher/QuantityMeasurementApp/tree/feature/UC11-VolumeEquality/src)
+[UC11-VolumeEquality](https://github.com/Prathamkacher/QuantityMeasurementApp/tree/feature/UC11-VolumeEquality/src)
 
 ---
 
-### UC12: Quantity Subtraction and Division
+# UC12: Quantity Subtraction and Division
 
   ### ⚙️ Description: UC12 extends the Quantity Measurement App by adding subtraction and division operations to the generic
   Quantity<T> class. These operations work across all measurement categories (length, weight, volume) while maintaining
