@@ -2,7 +2,7 @@ package com.quantitymeasurement;
 
 public class QuantityMeasurementApp {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
         Quantity<LengthUnit> length1 = new Quantity<>(10.0, LengthUnit.FEET);
         Quantity<LengthUnit> length2 = new Quantity<>(6.0, LengthUnit.INCHES);
