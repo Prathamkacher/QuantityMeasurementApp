@@ -494,3 +494,34 @@ UC14 extends the Quantity Measurement App to support temperature measurements (C
 [UC15–Architecture Refactoring](https://github.com/Prathamkacher/QuantityMeasurementApp/tree/feature/UC15-N-Tier)
 
 ---
+
+### 📅 UC16: Database Integration with JDBC
+
+- Description: UC16 extends the Quantity Measurement App by introducing database persistence using JDBC. Instead of storing measurement operations only in an in-memory cache (UC15), this use case stores all operations in a relational database for long-term persistence and history tracking.
+
+- Architecture:
+
+  - **Controller** – Handles requests and delegates operations to the service layer.
+  - **Service** – Contains business logic and coordinates conversions and operations.
+  - **Repository** – Adds a database-based repository for persistent storage.
+  - **DTO / Model / Entity** – Used for structured data transfer and internal representation.
+  - **Database Layer** – Uses JDBC to store measurement operations in the database.
+
+- Implementation:
+
+  - Introduced `QuantityMeasurementDatabaseRepository` for database persistence.
+  - Added `ApplicationConfig` and `ConnectionPool` for database configuration and connection management.
+  - Implemented **H2 database** for development and testing.
+  - Added **SLF4J logging** for structured logging instead of `System.out.println`.
+  - Created database tables `quantity_measurement_entity` and `quantity_measurement_history`.
+  - Repository selection (cache or database) is configurable using `application.properties`.
+
+- Example:
+
+  - `QuantityDTO(10, FEET, LENGTH) + QuantityDTO(12, INCHES, LENGTH) → QuantityDTO(11, FEET, LENGTH)`
+  - `QuantityDTO(2, KILOGRAM, WEIGHT) + QuantityDTO(500, GRAM, WEIGHT) → QuantityDTO(2.5, KILOGRAM, WEIGHT)`
+  - Measurement operations are **persisted in the database** and can be retrieved for history tracking.
+
+[UC16–Database Integration](https://github.com/Prathamkacher/QuantityMeasurementApp/tree/feature/UC16-Database-Integration-with-JDBC)
+
+---
