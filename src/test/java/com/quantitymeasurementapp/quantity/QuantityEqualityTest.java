@@ -4,10 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.quantitymeasurementapp.units.LengthUnit;
-import com.quantitymeasurementapp.units.VolumeUnit;
-import com.quantitymeasurementapp.units.WeightUnit;
-import com.quantitymeasurementapp.units.TemperatureUnit;
+import com.app.quantitymeasurementapp.quantity.Quantity;
+import com.app.quantitymeasurementapp.unit.LengthUnit;
+import com.app.quantitymeasurementapp.unit.TemperatureUnit;
+import com.app.quantitymeasurementapp.unit.VolumeUnit;
+import com.app.quantitymeasurementapp.unit.WeightUnit;
 
 public class QuantityEqualityTest {
 

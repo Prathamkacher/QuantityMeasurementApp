@@ -1,8 +1,8 @@
-package com.quantitymeasurementapp.quantity;
+package com.app.quantitymeasurementapp.quantity;
 
 import java.util.Objects;
 
-import com.quantitymeasurementapp.interfaces.IMeasurable;
+import com.app.quantitymeasurementapp.unit.IMeasurable;
 
 public final class Quantity<U extends IMeasurable> {
 
@@ -140,21 +140,21 @@ public final class Quantity<U extends IMeasurable> {
 	@Override
 	public boolean equals(Object obj) {
 
-	    if (this == obj)
-	        return true;
+		if (this == obj)
+			return true;
 
-	    if (!(obj instanceof Quantity<?>))
-	        return false;
+		if (!(obj instanceof Quantity<?>))
+			return false;
 
-	    Quantity<?> other = (Quantity<?>) obj;
+		Quantity<?> other = (Quantity<?>) obj;
 
-	    if (!this.unit.getClass().equals(other.unit.getClass()))
-	        return false;
+		if (!this.unit.getClass().equals(other.unit.getClass()))
+			return false;
 
-	    double baseThis = this.unit.convertToBaseUnit(this.value);
-	    double baseOther = ((IMeasurable) other.unit).convertToBaseUnit(other.value);
+		double baseThis = this.unit.convertToBaseUnit(this.value);
+		double baseOther = ((IMeasurable) other.unit).convertToBaseUnit(other.value);
 
-	    return Math.abs(baseThis - baseOther) < EPSILON;
+		return Math.abs(baseThis - baseOther) < EPSILON;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
-package com.quantitymeasurementapp.interfaces;
+package com.app.quantitymeasurementapp.unit;
 
 public interface IMeasurable {
+
 	double convertToBaseUnit(double value);
 
 	double convertFromBaseUnit(double baseValue);
