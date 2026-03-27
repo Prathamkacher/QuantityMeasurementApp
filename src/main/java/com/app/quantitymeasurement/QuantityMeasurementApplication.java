@@ -17,8 +17,7 @@ import io.swagger.v3.oas.annotations.info.Info;
 
 /**
  * The entry point for the Quantity Measurement Application.
- * This class initializes the Spring Boot application and provides
- * OpenAPI documentation details for the Quantity Measurement API.
+ * This class initializes the Spring Boot application.
  */
 public class QuantityMeasurementApplication {
 
